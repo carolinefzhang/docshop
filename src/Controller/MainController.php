@@ -5,15 +5,18 @@ namespace App\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\DocRepository;
 
 class MainController extends AbstractController
 {
     #[Route('/')]
-    public function index(): Response
+    public function index(DocRepository $repository): Response
     {
-        $num_of_docs = 10;
+        $docs = $repository->findAll();
+        $my_doc = $docs[array_rand($docs)];
         return $this->render('main/index.html.twig', [
-            'num_of_docs' => $num_of_docs,
+            'docs' => $docs,
+            'my_doc' => $my_doc,
         ]);
     }
 

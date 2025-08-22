@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ doc.name }} {% endblock %}
+{% block body %}
+<h1>This is the document</h1>
+<div>
+    <ul>
+        <li>name: {{ doc.name }}</li>
+        <li>description: {{ doc.description }}</li>
+        <li>downloadUrl: {{ doc.downloadUrl }}</li>
+    </ul>
+</div>
+{% endblock %}

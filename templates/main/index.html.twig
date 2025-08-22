@@ -3,6 +3,11 @@
 {% block body %}
 <h1>This is the home page</h1>
 <div>
-    <p>Explore our {{ num_of_docs }} documents!</p>
+    <p>Explore our {{ docs|length  }} documents!</p>
+    <ul>
+        <li><a href="{{ path('app_doc_viewdoc', {id: my_doc.id}) }}">{{ my_doc.name }}</a></li>
+        <li>description: {{ my_doc.description }}</li>
+        <li>downloadUrl: {{ my_doc.downloadUrl }}</li>
+    </ul>
 </div>
 {% endblock %}
