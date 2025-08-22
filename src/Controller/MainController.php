@@ -9,7 +9,7 @@ use App\Repository\DocRepository;
 
 class MainController extends AbstractController
 {
-    #[Route('/')]
+    #[Route('/', name: 'app_homepage')]
     public function index(DocRepository $repository): Response
     {
         $docs = $repository->findAll();

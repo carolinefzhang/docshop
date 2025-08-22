@@ -1,12 +1,14 @@
 {% extends 'base.html.twig' %}
 {% block title %}{{ doc.name }} {% endblock %}
 {% block body %}
-<h1>This is the document</h1>
-<div>
-    <ul>
-        <li>name: {{ doc.name }}</li>
-        <li>description: {{ doc.description }}</li>
-        <li>downloadUrl: {{ doc.downloadUrl }}</li>
-    </ul>
-</div>
+<main class="flex flex-col lg:flex-row">
+    <div class="flex-1 p-4">
+        <h1 class="text-4xl font-bold mb-4">This is the document</h1>
+        <ul>
+            <li>name: {{ doc.name }}</li>
+            <li>description: {{ doc.description }}</li>
+            <li>downloadUrl: {{ doc.downloadUrl }}</li>
+        </ul>
+    </div>
+</main>
 {% endblock %}

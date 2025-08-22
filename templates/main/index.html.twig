@@ -1,13 +1,27 @@
 {% extends 'base.html.twig' %}
 {% block title %}{{ parent() }} Your ultimate documents shop!{% endblock %}
 {% block body %}
-<h1>This is the home page</h1>
-<div>
-    <p>Explore our {{ docs|length  }} documents!</p>
-    <ul>
-        <li><a href="{{ path('app_doc_viewdoc', {id: my_doc.id}) }}">{{ my_doc.name }}</a></li>
-        <li>description: {{ my_doc.description }}</li>
-        <li>downloadUrl: {{ my_doc.downloadUrl }}</li>
-    </ul>
-</div>
+    <main class="flex flex-col lg:flex-row">
+        {{ include('main/_docAside.html.twig') }}
+        <div class="flex-1 p-4">
+            <h1 class="text-4xl font-bold mb-4">Welcome to the Document Shop</h1>
+            <p class="mb-4">Explore our collection of documents.</p>
+            <div class="space-y-5">
+            {% for doc in docs %}
+                <div class="text-gray-100 bg-[#2763A7] rounded-2xl pl-5 py-5 pr-11 flex flex-col min-[1174px]:flex-row min-[1174px]:justify-between">
+                    <div class="ml-5">
+                        <div class="float-end rounded-2xl py-1 px-3 flex justify-center w-32 items-center" style="background: rgba(255, 184, 0, .1);">
+                            <div class="rounded-full h-2 w-2 bg-amber-400 blur-[1px] mr-2"></div>
+                            <p class="uppercase text-xs">{{ my_doc.statusValue }}</p>
+                        </div>
+                        <p><a href="{{ path('app_doc_viewdoc', {id: doc.id}) }}">{{ doc.name }}</a></p>
+                        <p>description: {{ doc.description }}</p>
+                        <p>downloadUrl: {{ doc.downloadUrl }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+
+    </main>
 {% endblock %}
